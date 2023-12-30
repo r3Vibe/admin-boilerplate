@@ -1,10 +1,11 @@
+import Layout from "./components/ui/Layout";
+import SiteRoutes from "./routes";
+
 function App() {
   return (
-    <>
-      <center>
-        <h1>working</h1>
-      </center>
-    </>
+    <Layout>
+      <SiteRoutes />
+    </Layout>
   );
 }
 

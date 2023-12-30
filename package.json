@@ -9,13 +9,14 @@
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
     "lint:fix": "eslint . --fix",
     "preview": "vite preview",
-    "test": "vitest"
+    "test": "vitest src/tests/"
   },
   "dependencies": {
     "@nextui-org/react": "^2.2.9",
     "framer-motion": "^10.16.16",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-router-dom": "^6.21.1"
   },
   "devDependencies": {
     "@types/react": "^18.2.43",
