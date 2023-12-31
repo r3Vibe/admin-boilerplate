@@ -1,4 +1,4 @@
-import Layout from "./components/ui/Layout";
+import Layout from "./components/layout/Layout";
 import { getSuperAdmin } from "./http/api";
 import SiteRoutes from "./routes";
 import { preload } from "swr";
