@@ -1,4 +1,4 @@
-import { Input } from "@nextui-org/react";
+import { Button, Divider, Input } from "@nextui-org/react";
 import { useFormik } from "formik";
 import { ReactNode, useState } from "react";
 import { FormInterface } from "../../types";
@@ -9,6 +9,7 @@ const Form = ({
   className,
   validationSchema,
   formBuilderOptions,
+  handleFormSubmit,
 }: FormInterface): ReactNode => {
   const [visible, setVisible] = useState<boolean>(false);
   const toggleVisibility = () => setVisible(!visible);
@@ -23,7 +24,11 @@ const Form = ({
     initialValues,
     validationSchema,
     onSubmit(values, formikHelpers) {
-      console.log(values);
+      const formData = new FormData();
+      Object.keys(values).forEach((value: string) => {
+        formData.append(value, String(values[value]));
+      });
+      handleFormSubmit(formData);
       formikHelpers.resetForm();
     },
   });
@@ -64,10 +69,10 @@ const Form = ({
               )
             }
             description={formBuilderOptions[option].description}
-            errorMessage={formBuilderOptions[option].errorMessage}
+            errorMessage={errors[option]}
             defaultValue={String(initialValues[option])}
             isInvalid={!!errors[option]}
-            className="max-w-xs mb-2"
+            className="max-w-xs"
             onChange={handleChange}
             onBlur={handleBlur}
             value={String(values[option])}
@@ -77,6 +82,10 @@ const Form = ({
           />
         );
       })}
+      <Divider />
+      <Button color="default" type="submit">
+        Login
+      </Button>
     </form>
   );
 };

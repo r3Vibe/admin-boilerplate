@@ -2,7 +2,7 @@ import { ReactNode } from "react";
 import { AnyObject, ObjectSchema } from "yup";
 
 export interface DynamicInterface {
-  [key: string]: string | number | boolean | undefined;
+  [key: string]: string | number | boolean | undefined | null | Blob;
 }
 
 export interface FormBuilderOptionInterface {
@@ -29,12 +29,11 @@ export interface FormBuilderOptionInterface {
     startContent: ReactNode;
     endContent: ReactNode;
     description: string;
-    errorMessage: string;
   };
 }
 
 export interface FormInterface {
-  className?:string;
+  className?: string;
   initialValues: DynamicInterface;
   validationSchema: ObjectSchema<
     DynamicInterface,
@@ -43,10 +42,16 @@ export interface FormInterface {
     ""
   >;
   formBuilderOptions: FormBuilderOptionInterface;
+  handleFormSubmit: (values: FormData) => void;
 }
 
-
 export interface PasswordInputEyeInterface {
-  visible: boolean
-  toggleVisibility: () => void
+  visible: boolean;
+  toggleVisibility: () => void;
+}
+
+export interface ThemeHeader {
+  title: string;
+  showSwitch: boolean;
+  className: string;
 }

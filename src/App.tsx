@@ -1,16 +1,16 @@
 import Layout from "./components/layout/Layout";
-import { getSuperAdmin } from "./http/api";
 import SiteRoutes from "./routes";
-import { preload } from "swr";
 import { ToastContainer } from "react-toastify";
-
-preload("superuser", getSuperAdmin);
+import { useSiteStore } from "./store/useSiteStore";
+import Loader from "./components/ui/Loader";
 
 function App() {
+  const { isLoading } = useSiteStore();
   return (
     <Layout>
       <SiteRoutes />
       <ToastContainer />
+      {isLoading ? <Loader /> : null}
     </Layout>
   );
 }
