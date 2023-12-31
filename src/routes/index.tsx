@@ -7,13 +7,9 @@ export default function SiteRoutes() {
   return (
     <Routes>
       <Route path="/auth">
-        <Route path="login"   element={<Login />} />
+        <Route path="login" element={<Login />} />
       </Route>
-
-
       <Route path="/profile" element={<Profile />} />
-
-      
       <Route path="*" element={<NotFound />} />
     </Routes>
   );
